@@ -22,6 +22,11 @@ const register = async (req, res) => {
       return res.status(400).json({ message: "User already Exist" });
     }
 
+    const userNameExist = await User.findOne({ username: username });
+    if (userNameExist) {
+      return res.status(400).json({ message: "Username already exist" });
+    }
+
     const user = new User({
       username,
       email,
@@ -31,7 +36,7 @@ const register = async (req, res) => {
     // const userExist = user.find({});
     await user.save();
     await console.log("user saved in database");
-    res.json(req.body);
+    res.json({ message: "User created successfully" });
   } catch (error) {
     console.log(error);
   }
