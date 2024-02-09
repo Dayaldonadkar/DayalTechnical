@@ -8,7 +8,7 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    res.send("hi from register auth");
+    res.json({ message: req.body });
   } catch (error) {
     console.log(error);
   }
