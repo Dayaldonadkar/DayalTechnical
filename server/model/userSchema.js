@@ -19,26 +19,58 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
+// userSchema.pre("save", async function (next) {
+//   const user = this;
+//   if (!user.isModified("password")) {
+//     return next();
+//   }
+//   try {
+//     const saltRound = await bcrypt.genSalt(10);
+//     const hashPassword = await bcrypt.hash(user.password, saltRound); // await bcrypt.hash
+//     user.password = hashPassword;
+//     console.log(user.password);
+//     console.log(hashPassword);
+//     next();
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// });
+
+// userSchema.pre("save", async function (next) {
+//   const user = this;
+//   if (!user.isModified("password")) {
+//     return next();
+//   }
+//   try {
+//     const hashSalt = await bcrypt.genSalt(10);
+//     const hashPassword = await bcrypt.hash(user.password, hashSalt);
+//     user.password = hashPassword;
+//     next();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 userSchema.pre("save", async function (next) {
   const user = this;
   if (!user.isModified("password")) {
-    return next();
+    next();
   }
   try {
-    const saltRound = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(user.password, saltRound); // await bcrypt.hash
+    const hashSalt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(user.password, hashSalt);
     user.password = hashPassword;
-    console.log(user.password);
-    console.log(hashPassword);
     next();
   } catch (error) {
     console.log(error);
-    next(error);
   }
 });
-
 userSchema.methods.generateToken = async function () {
   try {
     return jwt.sign(

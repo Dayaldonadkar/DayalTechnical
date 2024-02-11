@@ -1,4 +1,5 @@
 const User = require("../model/userSchema");
+const bcrypt = require("bcrypt");
 
 const home = async (req, res) => {
   try {
@@ -46,4 +47,27 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { home, register };
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const userExist = await User.findOne({ email });
+    if (!userExist) {
+      res.status(401).json({ message: "Username not exist" });
+    } else {
+      const user = await bcrypt.compare(password, userExist.password);
+      if (user) {
+        res.status(200).json({
+          message: "login successfully",
+          token: await userExist.generateToken(),
+          id: userExist._id.toString(),
+        });
+      } else {
+        res.status(401).json({ message: "Password is incorrect" });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { home, register, login };
