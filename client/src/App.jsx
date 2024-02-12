@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
@@ -16,6 +16,17 @@ const App = () => {
   const hideNavbar = () => {
     setShowNavbar(false);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowNavbar(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="bg-[#121212] text-white flex justify-center">
       <div className="w-[84%] lg:w-[85%] xl:w-4/5 2xl:w-[75%]">
