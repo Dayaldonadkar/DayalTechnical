@@ -13,6 +13,9 @@ const App = () => {
   const handleNavbar = () => {
     setShowNavbar(!showNavbar);
   };
+  const hideNavbar = () => {
+    setShowNavbar(false);
+  };
   return (
     <div className="bg-[#121212] text-white flex justify-center">
       <div className="w-[84%] lg:w-[85%] xl:w-4/5 2xl:w-[75%]">
@@ -21,7 +24,7 @@ const App = () => {
           <div className="flex justify-center md:hidden">
             {showNavbar && (
               <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute">
-                <ul className="">
+                <ul className="" onClick={hideNavbar}>
                   <Link to="/">
                     <li className="py-1">Home</li>
                   </Link>
@@ -44,7 +47,7 @@ const App = () => {
               </div>
             )}
           </div>
-          <div onClick={handleNavbar}>
+          <div onClick={hideNavbar}>
             <Routes>
               <Route>
                 <Route path="/" element={<Home />} />
