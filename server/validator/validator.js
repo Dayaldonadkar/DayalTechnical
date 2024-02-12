@@ -28,10 +28,13 @@ const validate = (schema) => async (req, res, next) => {
     req.body = parseBody;
     next();
   } catch (err) {
-    const message = err.errors[0].message;
+    const status = 422;
+    const extraDetails = err.errors[0].message;
+    const message = "Fill the inputs properly";
     // console.log(err);
-    console.log(message);
-    res.json({ msg: message }); // Sending validation errors to the client
+    const error = { message, status, extraDetails };
+    next(error);
+    // res.json({ msg: message }); Sending validation errors to the client
   }
 };
 
