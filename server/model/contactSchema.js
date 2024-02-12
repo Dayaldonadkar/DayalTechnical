@@ -12,6 +12,6 @@ const contactSchema = new mongoose.Schema({
   },
 });
 
-const contactMessage = new mongoose.model("contactMessage", contactSchema);
+const contactMessage = new mongoose.model("Messages", contactSchema);
 
 module.exports = contactMessage;
