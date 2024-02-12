@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({ showNavbar, handleNavbar }) => {
   return (
-    <div className="text-[#5358EB] relative py-3">
+    <div className="text-[#5358EB] py-3 sticky top-0 z-10 bg-[#121212]">
       <div className="w-[100%]">
         <div className="flex justify-between">
           <Link to="/">

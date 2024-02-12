@@ -23,7 +23,7 @@ const App = () => {
           <Navbar handleNavbar={handleNavbar} showNavbar={showNavbar} />
           <div className="flex justify-center md:hidden">
             {showNavbar && (
-              <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute">
+              <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute top-14">
                 <ul className="" onClick={hideNavbar}>
                   <Link to="/">
                     <li className="py-1">Home</li>
