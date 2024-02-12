@@ -32,32 +32,7 @@ const App = () => {
       <div className="w-[84%] lg:w-[85%] xl:w-4/5 2xl:w-[75%]">
         <BrowserRouter>
           <Navbar handleNavbar={handleNavbar} showNavbar={showNavbar} />
-          <div className="flex justify-center md:hidden">
-            {showNavbar && (
-              <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute top-14">
-                <ul className="" onClick={hideNavbar}>
-                  <Link to="/">
-                    <li className="py-1">Home</li>
-                  </Link>
-                  <Link to="/about">
-                    <li className="py-1">About</li>
-                  </Link>
-                  <Link to="/services">
-                    <li className="py-1">Services</li>
-                  </Link>
-                  <Link to="/contact">
-                    <li className="py-1">Contact</li>
-                  </Link>
-                  <Link to="/register">
-                    <li className="py-1">Register</li>
-                  </Link>
-                  <Link to="/login">
-                    <li className="py-1">Login</li>
-                  </Link>
-                </ul>
-              </div>
-            )}
-          </div>
+
           <div onClick={hideNavbar}>
             <Routes>
               <Route>

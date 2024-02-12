@@ -2,7 +2,7 @@ import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ showNavbar, handleNavbar }) => {
+const Navbar = ({ showNavbar, handleNavbar, hideNavbar }) => {
   return (
     <div className="text-[#5358EB] py-3 sticky top-0 z-10 bg-[#121212]">
       <div className="w-[100%]">
@@ -37,6 +37,32 @@ const Navbar = ({ showNavbar, handleNavbar }) => {
               </Link>
             </ul>
           </div>
+        </div>
+        <div className="flex justify-center md:hidden">
+          {showNavbar && (
+            <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute top-12">
+              <ul className="" onClick={hideNavbar}>
+                <Link to="/">
+                  <li className="py-1">Home</li>
+                </Link>
+                <Link to="/about">
+                  <li className="py-1">About</li>
+                </Link>
+                <Link to="/services">
+                  <li className="py-1">Services</li>
+                </Link>
+                <Link to="/contact">
+                  <li className="py-1">Contact</li>
+                </Link>
+                <Link to="/register">
+                  <li className="py-1">Register</li>
+                </Link>
+                <Link to="/login">
+                  <li className="py-1">Login</li>
+                </Link>
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* <div className="flex justify-center md:hidden">
