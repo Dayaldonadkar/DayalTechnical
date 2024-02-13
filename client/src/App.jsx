@@ -29,7 +29,7 @@ const App = () => {
   }, []);
   return (
     <div className="bg-[#121212] text-white flex justify-center">
-      <div className="w-[84%] lg:w-[85%] xl:w-4/5 2xl:w-[75%]">
+      <div className="w-[84%] lg:w-[85%] xl:w-[75%] 2xl:w-[65%]">
         <BrowserRouter>
           <Navbar
             handleNavbar={handleNavbar}
