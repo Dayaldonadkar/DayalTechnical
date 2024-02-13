@@ -31,7 +31,11 @@ const App = () => {
     <div className="bg-[#121212] text-white flex justify-center">
       <div className="w-[84%] lg:w-[85%] xl:w-4/5 2xl:w-[75%]">
         <BrowserRouter>
-          <Navbar handleNavbar={handleNavbar} showNavbar={showNavbar} />
+          <Navbar
+            handleNavbar={handleNavbar}
+            showNavbar={showNavbar}
+            hideNavbar={hideNavbar}
+          />
 
           <div onClick={hideNavbar}>
             <Routes>

@@ -38,31 +38,35 @@ const Navbar = ({ showNavbar, handleNavbar, hideNavbar }) => {
             </ul>
           </div>
         </div>
-        <div className="flex justify-center md:hidden">
-          {showNavbar && (
-            <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute top-12">
-              <ul className="" onClick={hideNavbar}>
-                <Link to="/">
-                  <li className="py-1">Home</li>
-                </Link>
-                <Link to="/about">
-                  <li className="py-1">About</li>
-                </Link>
-                <Link to="/services">
-                  <li className="py-1">Services</li>
-                </Link>
-                <Link to="/contact">
-                  <li className="py-1">Contact</li>
-                </Link>
-                <Link to="/register">
-                  <li className="py-1">Register</li>
-                </Link>
-                <Link to="/login">
-                  <li className="py-1">Login</li>
-                </Link>
-              </ul>
-            </div>
-          )}
+        <div
+          className={`flex justify-center md:hidden transition-opacity duration-500 ${
+            showNavbar
+              ? "opacity-100"
+              : "opacity-0 duration-700 pointer-events-none"
+          }`}
+        >
+          <div className="w-[100%] bg-[#121212] h-52 left-0 flex justify-center absolute top-12">
+            <ul className="">
+              <Link to="/">
+                <li className="py-1">Home</li>
+              </Link>
+              <Link to="/about">
+                <li className="py-1">About</li>
+              </Link>
+              <Link to="/services">
+                <li className="py-1">Services</li>
+              </Link>
+              <Link to="/contact">
+                <li className="py-1">Contact</li>
+              </Link>
+              <Link to="/register">
+                <li className="py-1">Register</li>
+              </Link>
+              <Link to="/login">
+                <li className="py-1">Login</li>
+              </Link>
+            </ul>
+          </div>
         </div>
 
         {/* <div className="flex justify-center md:hidden">
