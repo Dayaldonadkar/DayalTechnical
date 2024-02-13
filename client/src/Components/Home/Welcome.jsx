@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <div>
+    <div className="sm:flex items-center">
       <div className="space-y-5 py-10">
         <div className="space-y-4">
           <div className="space-y-1">
@@ -12,7 +12,7 @@ const Welcome = () => {
               <span>Welcome to</span> <span>The Dayal Technical</span>
             </h1>
           </div>
-          <h3>
+          <h3 className="sm:w-[90%]">
             Are you ready to take your business to the next level with
             cutting-edge IT solutions? Look no further! At Thapa Technical, we
             specialize in providing innovative IT services and solutions
