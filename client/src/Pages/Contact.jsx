@@ -3,7 +3,6 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="">
-      <h1 className="text-3xl font-bold pt-10">Contact Us</h1>
       <div className="lg:flex items-center sm:space-x-2 py-20">
         <div className="flex justify-center">
           <img
@@ -14,6 +13,7 @@ const Contact = () => {
         </div>
         <div className="flex justify-center">
           <form className="space-y-6 py-10 w-[90%] sm:w-3/5 lg:w-4/5">
+            <h1 className="text-3xl font-bold pt-10">Contact Us</h1>
             <div className="flex flex-col">
               <label className="pb-3" htmlFor="name">
                 Name
@@ -47,7 +47,9 @@ const Contact = () => {
                 type="fieldtext"
               />
             </div>
-            <button>Submit</button>
+            <button className="bg-[#646CFF] px-7 py-2 rounded-lg">
+              Submit
+            </button>
           </form>
         </div>
       </div>

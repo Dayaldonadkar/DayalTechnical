@@ -36,7 +36,7 @@ const Login = () => {
               />
             </div>
 
-            <button>Login</button>
+            <button className="bg-[#646CFF] px-7 py-2 rounded-lg">Login</button>
           </form>
         </div>
       </div>
