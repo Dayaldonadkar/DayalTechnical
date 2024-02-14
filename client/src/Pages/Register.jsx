@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Register = () => {
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setData({
+      ...data,
+      [id]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data); // You can handle form submission logic here
+  };
+
   return (
     <div className="">
       <div className="lg:flex items-center sm:space-x-2 py-20">
@@ -12,7 +32,10 @@ const Register = () => {
           />
         </div>
         <div className="flex justify-center">
-          <form className="space-y-6 py-10 w-[90%] sm:w-3/5 lg:w-4/5">
+          <form
+            className="space-y-6 py-10 w-[90%] sm:w-3/5 lg:w-4/5"
+            onSubmit={handleSubmit}
+          >
             <h1 className="text-3xl font-bold pt-10">Register</h1>
             <div className="flex flex-col">
               <label className="pb-3" htmlFor="username">
@@ -22,17 +45,20 @@ const Register = () => {
                 className="text-black py-1 pl-2 outline-none"
                 id="username"
                 type="text"
+                value={data.username}
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
-              <label className="pb-3" htmlFor="name">
+              <label className="pb-3" htmlFor="email">
                 Email
               </label>
               <input
                 className="text-black py-1 pl-2"
                 type="text"
-                name=""
-                id="name"
+                id="email"
+                value={data.email}
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
@@ -43,21 +69,25 @@ const Register = () => {
                 className="text-black py-1 pl-2 outline-none"
                 id="phone"
                 type="phone"
+                value={data.phone}
+                onChange={handleChange}
               />
             </div>
 
             <div className="flex flex-col">
-              <label className="pb-3" htmlFor="email">
+              <label className="pb-3" htmlFor="password">
                 Password
               </label>
               <input
                 className="text-black py-1 pl-2 outline-none"
-                id="email"
-                type="email"
+                id="password"
+                type="password"
+                value={data.password}
+                onChange={handleChange}
               />
             </div>
 
-            <button className="bg-[#646CFF] px-7 py-2 rounded-lg">
+            <button className="bg-[#646CFF] px-7 py-2 rounded-lg" type="submit">
               Register
             </button>
           </form>

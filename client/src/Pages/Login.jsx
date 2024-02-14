@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [user, setUser] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setUser({
+      ...user,
+      [id]: value,
+    });
+  };
   return (
     <div className="">
       <h1 className="text-3xl font-bold pt-10">Contact Us</h1>
@@ -22,7 +30,9 @@ const Login = () => {
                 className="text-black py-1 pl-2"
                 type="text"
                 name=""
-                id="name"
+                id="email"
+                value={user.email}
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
@@ -31,8 +41,10 @@ const Login = () => {
               </label>
               <input
                 className="text-black py-1 pl-2 outline-none"
-                id="email"
+                id="password"
                 type="email"
+                value={user.password}
+                onChange={handleChange}
               />
             </div>
 

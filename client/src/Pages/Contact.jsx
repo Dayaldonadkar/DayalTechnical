@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [user, setUser] = useState({ name: "", email: "", message: "" });
+  const handleChange = (e) => {
+    const id = e.target.id;
+    const value = e.target.value;
+    setUser({
+      ...user,
+      [id]: value,
+    });
+  };
   return (
     <div className="">
       <div className="lg:flex items-center sm:space-x-2 py-20">
@@ -23,6 +32,8 @@ const Contact = () => {
                 type="text"
                 name=""
                 id="name"
+                value={user.name}
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
@@ -33,6 +44,8 @@ const Contact = () => {
                 className="text-black py-1 pl-2 outline-none"
                 id="email"
                 type="email"
+                value={user.email}
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
@@ -45,6 +58,8 @@ const Contact = () => {
                 rows="8"
                 cols="50"
                 type="fieldtext"
+                value={user.message}
+                onChange={handleChange}
               />
             </div>
             <button className="bg-[#646CFF] px-7 py-2 rounded-lg">
