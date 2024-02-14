@@ -18,15 +18,15 @@ const register = async (req, res) => {
       return res.status(401).send({ error: "All fields are required" });
     }
 
-    const userExist = await User.findOne({ email: email });
-    if (userExist) {
-      return res.status(400).json({ message: "User already Exist" });
-    }
+    // const userExist = await User.findOne({ email: email });
+    // if (userExist) {
+    //   return res.status(400).json({ message: "User already Exist" });
+    // }
 
-    const userNameExist = await User.findOne({ username: username });
-    if (userNameExist) {
-      return res.status(400).json({ message: "Username already exist" });
-    }
+    // const userNameExist = await User.findOne({ username: username });
+    // if (userNameExist) {
+    //   return res.status(400).json({ message: "Username already exist" });
+    // }
 
     const userCreated = await User.create({
       username,

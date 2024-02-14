@@ -31,10 +31,10 @@ const validate = (schema) => async (req, res, next) => {
     const status = 422;
     const extraDetails = err.errors[0].message;
     const message = "Fill the inputs properly";
-    // console.log(err);
+    console.log(err);
     const error = { message, status, extraDetails };
     next(error);
-    // res.json({ msg: message }); Sending validation errors to the client
+    res.json({ msg: message });
   }
 };
 

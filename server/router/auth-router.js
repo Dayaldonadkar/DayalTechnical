@@ -7,7 +7,7 @@ const { signUpSchema, validate } = require("../validator/validator");
 
 router.route("/").get(authController.home);
 
-router.route("/register").post(validate(signUpSchema), authController.register);
+router.route("/register").post(authController.register);
 
 router.route("/login").post(authController.login);
 router.route("/contact").post(authContact.contact);

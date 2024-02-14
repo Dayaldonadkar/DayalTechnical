@@ -7,6 +7,7 @@ const Register = () => {
     phone: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -16,9 +17,24 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data); // You can handle form submission logic here
+    try {
+      const response = await fetch("http://localhost:8080/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to register");
+      }
+      // Registration successful
+      console.log(response, "User registered successfully");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -37,6 +53,7 @@ const Register = () => {
             onSubmit={handleSubmit}
           >
             <h1 className="text-3xl font-bold pt-10">Register</h1>
+            {error && <p className="text-red-500">{error}</p>}
             <div className="flex flex-col">
               <label className="pb-3" htmlFor="username">
                 Username
@@ -87,7 +104,10 @@ const Register = () => {
               />
             </div>
 
-            <button className="bg-[#646CFF] px-7 py-2 rounded-lg" type="submit">
+            <button
+              className="bg-[#646CFF] px-7 py-2 rounded-lg"
+              onClick={handleSubmit}
+            >
               Register
             </button>
           </form>

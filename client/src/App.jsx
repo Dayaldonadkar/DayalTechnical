@@ -7,6 +7,7 @@ import Services from "./Pages/Services";
 import Contact from "./Pages/Contact";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import CountryCityDropdown from "./Pages/CountryCityDropdown";
 
 const App = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/country" element={<CountryCityDropdown />} />
               </Route>
             </Routes>
           </div>
